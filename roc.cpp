@@ -16,16 +16,6 @@ ROC::ROC(const Mat& testlabels, Mat& responses, float truelabel)
     cv::findNonZero(correct, correct_locs);
     cv::findNonZero(incorrect, incorrect_locs);
 
-    Mat trueerror, false_error;
-    compare(testlabels, responses, trueerror, CMP_EQ);  // trueerror = 255 when (testlabels = responses), 0 otherwise  
-    false_error = (255 - trueerror);            // false_error
-    int num_true = countNonZero(trueerror);               
-    int num_false = testlabels.rows - num_true;
-
-    Mat true_locs, false_locs;
-    cv::findNonZero(trueerror, true_locs);
-    cv::findNonZero(false_error, false_locs);
-
     // Now isolate the true positives and true negatives
     TP = 0;
     for (int i = 0; i < num_correct; i++)
