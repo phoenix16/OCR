@@ -5,7 +5,7 @@ int main(int argc, const char* argv[])
 {
     if (argc < 4)
     {
-		cout << "OCR between  2 digits (for now)" << endl;
+	cout << "OCR between  2 digits (for now)" << endl;
         cout << "Usage: " << argv[0] << " <train csv file1> <train csv file2> <test csv file1> <test csv file2>" << endl;
         exit(1);
     }
