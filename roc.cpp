@@ -4,8 +4,10 @@ ROC::ROC(const Mat& testlabels, Mat& responses, float truelabel)
     : testlabels(testlabels), responses(responses)
 {
     Mat trueerror, false_error;
-    compare(testlabels, responses, trueerror, CMP_EQ);    false_error = (255 - trueerror);
-    int num_true = countNonZero(trueerror);               int num_false = testlabels.rows - num_true;
+    compare(testlabels, responses, trueerror, CMP_EQ);  // trueerror = 255 when (testlabels = responses), 0 otherwise  
+    false_error = (255 - trueerror);            // false_error
+    int num_true = countNonZero(trueerror);               
+    int num_false = testlabels.rows - num_true;
 
     Mat true_locs, false_locs;
     cv::findNonZero(trueerror, true_locs);
