@@ -1,5 +1,5 @@
 /*
- * Developer : Prakriti Chintalapoodi - c.prakriti@gmail.com * 
+ * Developer : Prakriti Chintalapoodi - c.prakriti@gmail.com 
 */
 
 #ifndef OCR_H
