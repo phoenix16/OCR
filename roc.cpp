@@ -8,7 +8,7 @@ ROC::ROC(const Mat& testlabels, Mat& responses, float truelabel)
 
     Mat correct, incorrect;
     compare(testlabels, responses, correct, CMP_EQ);  // correct = 255 when (testlabels = responses), 0 otherwise
-    incorrect = (255 - correct);                      // incorrect = (max_value = 255) - correct
+    incorrect = (255 - correct);                      
     int num_correct = countNonZero(correct);
     int num_incorrect = testlabels.rows - num_correct;
 
