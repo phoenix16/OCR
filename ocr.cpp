@@ -2,8 +2,12 @@
 
 OCR::OCR(int TrainClassSize, int TestClassSize, int numClasses)
     : TrainClassSize(TrainClassSize), TestClassSize(TestClassSize), numClasses(numClasses)
+{    
+}
+
+const Mat& OCR::getTestLabels() const
 {
-    responses = Mat::zeros(numClasses*TestClassSize, 1, CV_32FC1);
+    return testLabels;
 }
 
 // Public function to parse input csvs and load the data into Mats
@@ -48,20 +52,13 @@ void OCR::read_from_csv(const char* trainFile1, const char*  trainFile2, const c
     testLabels.push_back(testLabels2);
 }
 
-Mat OCR::svm_classify()
+void OCR::svm_classify(Mat& responses)
 {
     // Set up SVM parameters
     CvSVMParams SVM_params;
     SVM_params.svm_type = CvSVM::C_SVC;
     SVM_params.kernel_type = CvSVM::LINEAR;
     SVM_params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER, 1000, 0.01);
-    // If non-linear kernel:
-    //SVM_params.degree = 0;
-    //SVM_params.gamma = 1;
-    //SVM_params.coef0 = 0;
-    //SVM_params.C = 1;
-    //SVM_params.nu = 0;
-    //SVM_params.p = 0;
 
     // Train the SVM
     CvSVM SVM;
@@ -79,8 +76,8 @@ Mat OCR::svm_classify()
         {
             responses.at<float>(i,0) = classLabel2;
         }
+        cout << testLabels.at<float>(i,0) << " predicted as " << responses.at<float>(i,0) << endl;
     }
-    return responses;
 }
 
 // To view single image

@@ -1,6 +1,6 @@
 #include "roc.h"
 
-ROC::ROC(Mat testlabels, Mat responses, float truelabel)
+ROC::ROC(const Mat& testlabels, Mat& responses, float truelabel)
     : testlabels(testlabels), responses(responses)
 {
     Mat trueerror, false_error;

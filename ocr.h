@@ -23,16 +23,15 @@ private:
     int numClasses;
     CvMLData DataTrain1, DataTrain2, DataTest1, DataTest2;
     float classLabel1, classLabel2;
-    Mat responses;
+    Mat trainData;
+    Mat trainLabels;
+    Mat testData;
+    Mat testLabels;
 
 public:
-
-    Mat trainLabels;
-    Mat trainData;
-    Mat testLabels;
-    Mat testData;
     OCR(int TrainClassSize, int TestClassSize, int numClasses);
-    Mat svm_classify();
+    const Mat& getTestLabels() const;
+    void svm_classify(Mat& responses);
     void read_from_csv(const char* trainFile1, const char*  trainFile2, const char*  testFile1, const char*  testFile2);
 };
 

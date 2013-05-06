@@ -6,7 +6,7 @@
 class ROC
 {
 public:
-    ROC(Mat testlabels, Mat responses, float truelabel);
+    ROC(const Mat& testlabels, Mat& responses, float truelabel);
     float precision();
     float recall();
     float FScore();
