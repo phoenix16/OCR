@@ -1,3 +1,7 @@
+/*
+ * Developer : Prakriti Chintalapoodi - c.prakriti@gmail.com 
+*/
+
 #include "ocr.h"
 
 OCR::OCR(int TrainClassSize, int TestClassSize, int numClasses)

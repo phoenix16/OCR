@@ -1,3 +1,7 @@
+/*
+ * Developer : Prakriti Chintalapoodi - c.prakriti@gmail.com 
+*/
+
 #include "roc.h"
 
 // ROC = Receiver Operating Characteristic of the Classifier
